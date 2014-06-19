@@ -1,0 +1,85 @@
+---
+title       : Motor Trend Car Road Tests Result
+subtitle    : Change cylinders and displacement to get miles per gallon on car
+author      : peikuo
+job         : Coursera Assignment
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap, quiz, shiny, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+
+--- .class #id 
+
+## Choose number of cylinders and displacement
+On the left panel, you can change this two paramenters
+`r opts_chunk$set(echo=FALSE)`
+```{r opts.label = 'shiny'}
+require(slidify)
+slidifyUI(
+  fluidPage(
+    titlePanel("Motor Trend Car Road Tests Result"),
+    
+    sidebarLayout(
+      sidebarPanel(
+        t("Choose number of cylinders and displacement to get the result of miles per gallon each car"),
+        br(),
+        br(),
+        radioButtons("cyl", "Number of cylinders:",
+                     c("4" = "4",
+                       "6" = "6",
+                       "8" = "8")
+                     ),
+        
+        br(),
+        
+        sliderInput("range", "Displacement",
+                    min = 60, max = 500, value = c(100,400)
+                    ),
+        br()
+      ),
+      mainPanel(
+        tabsetPanel(type = "tabs", 
+                    tabPanel("Plot Result", plotOutput("plot")), 
+                    tabPanel("Table Result", tableOutput("table"))
+        )
+      )
+    )
+  )
+)
+        
+```
+
+--- .class #id 
+
+## Miles per gallon on each car by barplot
+After change parameters on the left, you can see result on the right shown by barplot
+
+Barplot as below:
+
+```{r}
+par(mar=c(7,7,1,5))
+
+barplot(mtcars$mpg, names.arg = rownames(mtcars), horiz = T, 
+              cex.names = 0.9, las = 1, col=topo.colors(10), 
+              xlab="Miles pre gallon")
+```
+
+--- .class #id 
+
+## Miles per gallon on each car by Table
+After change parameters on the left, you can see result on the right shown by table
+
+Table as below:
+```{r}
+head(mtcars[, c("cyl", "disp", "mpg")], 8)
+```
+
+--- .class #id 
+## Where to use this Application
+
+Actually, this app is just a sample to use shiny for analysing data.
+* In my app, my data is from the mtcars in package datasets
+* In the future, change the dataset to get reactive result as you like
+
+Wish you like this Application and have a happy hour
