@@ -116,9 +116,12 @@
     <h2>Miles per gallon on each car by barplot</h2>
   </hgroup>
   <article data-timings="">
-    <p>After change parameters on the left, you can see result on the right shown by barplot</p>
+    <p>After change parameters on the left, you can see result on the right shown by barplot
+Barplot as below:</p>
 
-<p>Barplot as below:</p>
+<pre><code class="r">par(mar=c(7,7,1,5))
+barplot(mtcars$mpg, names.arg = rownames(mtcars), horiz = T, cex.names = 0.9, las = 1,         col=topo.colors(10), xlab=&quot;Miles pre gallon&quot;)
+</code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
 
@@ -134,6 +137,9 @@
     <p>After change parameters on the left, you can see result on the right shown by table</p>
 
 <p>Table as below:</p>
+
+<pre><code class="r">head(mtcars[, c(&quot;cyl&quot;, &quot;disp&quot;, &quot;mpg&quot;)], 8)
+</code></pre>
 
 <pre><code>##                   cyl  disp  mpg
 ## Mazda RX4           6 160.0 21.0
@@ -162,7 +168,7 @@
 <li>In the future, change the dataset to get reactive result as you like</li>
 </ul>
 
-<p>Hope you like this Application and have a happy day</p>
+<p>Wish you like this Application and have a happy hour</p>
 
   </article>
   <!-- Presenter Notes -->

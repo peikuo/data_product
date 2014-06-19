@@ -74,8 +74,12 @@ On the left panel, you can change this two paramenters
 
 ## Miles per gallon on each car by barplot
 After change parameters on the left, you can see result on the right shown by barplot
-
 Barplot as below:
+
+```r
+par(mar=c(7,7,1,5))
+barplot(mtcars$mpg, names.arg = rownames(mtcars), horiz = T, cex.names = 0.9, las = 1,         col=topo.colors(10), xlab="Miles pre gallon")
+```
 
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2.png) 
 
@@ -85,6 +89,10 @@ Barplot as below:
 After change parameters on the left, you can see result on the right shown by table
 
 Table as below:
+
+```r
+head(mtcars[, c("cyl", "disp", "mpg")], 8)
+```
 
 ```
 ##                   cyl  disp  mpg
@@ -105,4 +113,4 @@ Actually, this app is just a sample to use shiny for analysing data.
 * In my app, my data is from the mtcars in package datasets
 * In the future, change the dataset to get reactive result as you like
 
-Hope you like this Application and have a happy day
+Wish you like this Application and have a happy hour
